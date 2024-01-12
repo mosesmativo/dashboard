@@ -8,6 +8,7 @@ export const LogInPage = () => {
     const [, setToken] = useToken();
 
     const [errorMessage, setErrorMessage] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const [emailValue, setEmailValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
@@ -49,6 +50,8 @@ export const LogInPage = () => {
 
     const onLogInClicked = async () => {
         try {
+            setLoading(true);
+
             const response = await axios.post('/api/login', {
                 email: emailValue,
                 password: passwordValue,
@@ -60,6 +63,8 @@ export const LogInPage = () => {
 
         } catch (e) {
             setErrorMessage(true);
+        } finally { 
+            setLoading(false)
         }
     };
 
@@ -77,10 +82,10 @@ export const LogInPage = () => {
                     value={passwordValue}
                     onChange={e => setPasswordValue(e.target.value)}
                     placeholder="password" />
-                <hr />
+                <hr />               
                 <button
                     disabled={!emailValue || !passwordValue}
-                    onClick={onLogInClicked}>Log In</button>
+                    onClick={onLogInClicked}>  {loading ? <span class="loader"></span> : 'Login'}</button>
                 <button onClick={() => history.push('/forgot-password')}>Forgot your password?</button>
                 <button onClick={() => history.push('/signup')}>Don't have an account? Sign Up</button>
                 <button
