@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useToken } from '../auth/useToken';
 
@@ -12,7 +12,7 @@ export const SignUpPage = () => {
     const [passwordValue, setPasswordValue] = useState('');
     const [confirmPasswordValue, setConfirmPasswordValue] = useState('');
 
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const onSignUpClicked = async () => {
         try {
@@ -22,7 +22,7 @@ export const SignUpPage = () => {
             });
             const { token } = response.data;
             setToken(token);
-            history.push(`/please-verify?email=${encodeURIComponent(emailValue)}`);
+            navigate(`/please-verify?email=${encodeURIComponent(emailValue)}`);
 
         } catch (e) {
             console.log(e);
@@ -33,7 +33,7 @@ export const SignUpPage = () => {
 
     return (
         <div className="content-container">
-            <h1>Sign Up</h1>
+            <h1 className='text-3xl font-bold underline'>Sign Up</h1>
             {errorMessage && <div className="fail"><p>Email address aready in use</p></div>}
             <input
                 value={emailValue}
@@ -56,7 +56,7 @@ export const SignUpPage = () => {
                     passwordValue !== confirmPasswordValue
                 }
                 onClick={onSignUpClicked}>Sign Up</button>
-            <button onClick={() => history.push('/login')}>Already have an account? Log In</button>
+            <button onClick={() => navigate('/login')}>Already have an account? Log In</button>
         </div>
     );
 }

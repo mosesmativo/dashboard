@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useToken } from '../auth/useToken';
 import { useQueryParams } from '../util/useQueryParams';
@@ -15,14 +15,14 @@ export const LogInPage = () => {
     const [getGoogleOathUrl, setGoogleOathUrl] = useState('');
     const { token: oathToken } = useQueryParams();
 
-    const history = useHistory();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (oathToken) {
             setToken(oathToken);
-            history.push('/');
+            navigate('/');
         }
-    }, [oathToken, setToken, history]);
+    }, [oathToken, setToken, navigate]);
 
     useEffect(() => {
         const loadOathUrl = async () => {
@@ -59,7 +59,7 @@ export const LogInPage = () => {
             const { token } = response.data;
             setToken(token);
             setErrorMessage(false);
-            history.push('/');
+            navigate('/');
 
         } catch (e) {
             setErrorMessage(true);
@@ -71,7 +71,7 @@ export const LogInPage = () => {
     return (
         <>
             <div className="content-container">
-                <h1>Log In</h1>
+                <h1 className="text-3xl font-bold underline">Log In</h1>
                 {errorMessage && <div className="fail">Username or Password incorrect</div>}
                 <input
                     value={emailValue}
@@ -86,8 +86,8 @@ export const LogInPage = () => {
                 <button
                     disabled={!emailValue || !passwordValue}
                     onClick={onLogInClicked}>  {loading ? <span class="loader"></span> : 'Login'}</button>
-                <button onClick={() => history.push('/forgot-password')}>Forgot your password?</button>
-                <button onClick={() => history.push('/signup')}>Don't have an account? Sign Up</button>
+                <button onClick={() => navigate('/forgot-password')}>Forgot your password?</button>
+                <button onClick={() => navigate('/signup')}>Don't have an account? Sign Up</button>
                 <button
                     disabled={!getGoogleOathUrl}
                     onClick={() => window.location.href = getGoogleOathUrl}

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useQueryParams } from '../util/useQueryParams';
 import axios from 'axios';
 import { PasswordResetSuccess } from './PasswordResetSuccess';
@@ -13,7 +13,7 @@ export const PasswordResetLandingPage = () => {
     const [passwordResetCode, setpasswordResetCode] = useState('');
     const { email } = useQueryParams();
 
-    const history = useHistory();
+    const history = useNavigate();
 
     const onResetClicked = async () => {
         try {
@@ -53,7 +53,7 @@ export const PasswordResetLandingPage = () => {
                 disabled={!passwordValue || !confirmPasswordValue || passwordValue !== confirmPasswordValue}
                 onClick={onResetClicked}
             >Reset Password</button>
-            <button onClick={e => history.push('/login')}>Go To login</button>
+            <button onClick={e => navigate('/login')}>Go To login</button>
         </div>
     )
 };

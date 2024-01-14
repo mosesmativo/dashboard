@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useToken } from '../auth/useToken';
 import { useUser } from '../auth/useUser';
@@ -13,7 +13,7 @@ export const UserInfoPage = () => {
 
     // We'll use the history to navigate the user
     // programmatically later on (we're not using it yet)
-    const history = useHistory();
+    const history = useNavigate();
 
     // These states are bound to the values of the text inputs
     // on the page (see JSX below). 
@@ -62,7 +62,7 @@ export const UserInfoPage = () => {
 
     const logOut = () => {
         localStorage.removeItem('token');
-        history.push('/login');
+        navigate('/login');
     }
 
     const resetValues = () => {
@@ -75,8 +75,8 @@ export const UserInfoPage = () => {
     // And here we have the JSX for our component. It's pretty straightforward
     return (
         <Layout>
-            <div className="dashboard">
-            <h1>Info for {name}</h1>
+            <div className="dashboard content-container">
+            <h1 className='text-3xl font-bold underline'>Info for {name}</h1>
                 {!isVerified && <div className="fail">
                     <p>You wont be able to make any changes untill you veryfy the email sent to <br /> {email}</p>
                 </div>}
