@@ -13,7 +13,7 @@ export const PasswordResetLandingPage = () => {
     const [passwordResetCode, setpasswordResetCode] = useState('');
     const { email } = useQueryParams();
 
-    const history = useNavigate();
+    const navigate = useNavigate();
 
     const onResetClicked = async () => {
         try {

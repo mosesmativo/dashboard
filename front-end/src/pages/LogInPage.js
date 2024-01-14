@@ -70,13 +70,18 @@ export const LogInPage = () => {
 
     return (
         <>
-            <div className="content-container">
+            <div className="content-container flex align-middle justify-center">
+                <div>
+                <h1>Image Here</h1>
+                </div>
+                <div>
                 <h1 className="text-3xl font-bold underline">Log In</h1>
                 {errorMessage && <div className="fail">Username or Password incorrect</div>}
                 <input
                     value={emailValue}
                     onChange={e => setEmailValue(e.target.value)}
                     placeholder="someone@gmail.com" />
+                    <br />
                 <input
                     type="password"
                     value={passwordValue}
@@ -86,13 +91,20 @@ export const LogInPage = () => {
                 <button
                     disabled={!emailValue || !passwordValue}
                     onClick={onLogInClicked}>  {loading ? <span class="loader"></span> : 'Login'}</button>
+                    <br />
                 <button onClick={() => navigate('/forgot-password')}>Forgot your password?</button>
+                <br />
                 <button onClick={() => navigate('/signup')}>Don't have an account? Sign Up</button>
+                <br />
                 <button
+                className="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 me-2 mb-2"
                     disabled={!getGoogleOathUrl}
                     onClick={() => window.location.href = getGoogleOathUrl}
                 >Login With Google</button>
+                </div>
+
             </div>
+            
         </>
     );
 };

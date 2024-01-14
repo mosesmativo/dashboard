@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
 export const PasswordResetFail = () => {
-    const history = useNavigate();
+    const navigate = useNavigate();
     return (
         <div className="content-container fail">
             <div className="holder">

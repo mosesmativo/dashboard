@@ -7,7 +7,7 @@ export const ForgotPasswordPage = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [success, setSuccess] = useState(false);
     const [emailValue, setEmailValue] = useState('');
-    const history = useNavigate();
+    const navigate = useNavigate();
 
     const onSubmitClicked = async () => {
         try {

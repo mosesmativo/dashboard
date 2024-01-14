@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 
 export const EmailVerificationFailure = () => {
-    const history = useNavigate();
+    const navigate = useNavigate();
     return (
         <div className="content-container">
             <div className="fail">

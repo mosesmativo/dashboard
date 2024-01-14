@@ -15,7 +15,7 @@ function EmailVerification() {
     return (
         <div className="content-container">
             <h1>Thanks for signing up!</h1>
-            <p>A verification <strong>CODE!</strong> has been sent to the email address you provided to accsess full features!</p>
+            <p>A verification <strong>CODE!</strong> has been sent to the email address you provided to accsess full features use  it to validate!</p>
         </div>
     )
 };

@@ -1,6 +1,6 @@
 {
-  "short_name": "React User Auth",
-  "name": "Full-Stack React User Auth App",
+  "short_name": "React App",
+  "name": "Create React App Sample",
   "icons": [
     {
       "src": "favicon.ico",

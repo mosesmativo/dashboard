@@ -13,7 +13,7 @@ export const UserInfoPage = () => {
 
     // We'll use the history to navigate the user
     // programmatically later on (we're not using it yet)
-    const history = useNavigate();
+    const navigate = useNavigate();
 
     // These states are bound to the values of the text inputs
     // on the page (see JSX below). 
@@ -75,7 +75,7 @@ export const UserInfoPage = () => {
     // And here we have the JSX for our component. It's pretty straightforward
     return (
         <Layout>
-            <div className="dashboard content-container">
+            <div className="dashboard content-container p-8">
             <h1 className='text-3xl font-bold underline'>Info for {name}</h1>
                 {!isVerified && <div className="fail">
                     <p>You wont be able to make any changes untill you veryfy the email sent to <br /> {email}</p>

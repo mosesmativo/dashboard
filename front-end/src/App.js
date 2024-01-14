@@ -1,9 +1,9 @@
-import { Routes } from './Routes';
+import { MainRoutes } from './MainRoutes';
 
-export const App = () => {
+export  const App = () => {
     return (
         <div className="">
-            <Routes />
+            <MainRoutes />
         </div>
     );
 }
